@@ -7,6 +7,12 @@ export function InputItem() {
   const { dispatch } = useContext(ListContext);
 
   function handleAddItem() {
+    if (item === "")
+      return toast.error("Can't add empty item", {
+        position: "bottom-right",
+        autoClose: 2000,
+      });
+
     dispatch({
       type: "ADD_ITEM",
       payload: {
